@@ -138,9 +138,9 @@ vagrant ssh controller-0
 kubectl get nodes
 
 NAME       STATUS    AGE       VERSION
-worker-0   Ready     1m        v1.9.2
-worker-1   Ready     55s       v1.9.2
-worker-2   Ready     12s       v1.9.2
+worker-0   Ready     1m        v1.11.2
+worker-1   Ready     55s       v1.11.2
+worker-2   Ready     12s       v1.11.2
 ```
 
 Configure a `kubernetes-the-hard-way` context on your host, set it as
@@ -166,7 +166,7 @@ kubectl create -f ./manifests/kube-dns.yaml
 [...]
 kubectl get pods -l k8s-app=kube-dns -n kube-system
 [...]
-kubectl run busybox --image=busybox --command -- sleep 3600
+kubectl run busybox --image=busybox:1.28.4 --command -- sleep 3600
 [...]
 POD_NAME=$(kubectl get pods -l run=busybox -o jsonpath="{.items[0].metadata.name}")
 kubectl exec -ti $POD_NAME -- nslookup kubernetes
