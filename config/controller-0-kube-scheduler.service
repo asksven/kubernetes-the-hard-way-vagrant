@@ -4,7 +4,7 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 
 [Service]
 ExecStart=/usr/local/bin/kube-scheduler \
-  --leader-elect=true \
+  --leader-elect=false \
   --master=http://192.168.199.10:8080 \
   --v=2
 Restart=on-failure

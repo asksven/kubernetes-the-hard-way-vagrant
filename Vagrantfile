@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "512"
+    vb.memory = "1024"
     vb.customize ["modifyvm", :id, "--audio", "none"]
   end
 
@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
       end
   end
 
-  (0..2).each do |n|
+  (0..0).each do |n|
     config.vm.define "controller-#{n}" do |c|
         c.vm.hostname = "controller-#{n}"
         c.vm.network "private_network", ip: "192.168.199.1#{n}"

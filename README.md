@@ -73,8 +73,6 @@ vagrant status
 Current machine states:
 
 controller-0              running (virtualbox)
-controller-1              running (virtualbox)
-controller-2              running (virtualbox)
 worker-0                  running (virtualbox)
 worker-1                  running (virtualbox)
 worker-2                  running (virtualbox)
@@ -103,8 +101,6 @@ vagrant ssh controller-0
 ETCDCTL_API=3 etcdctl member list
 
 6c500a9f4f9113de, started, controller-0, https://192.168.199.10:2380, https://192.168.199.10:2379
-e206d150eae73959, started, controller-2, https://192.168.199.12:2380, https://192.168.199.12:2379
-e7e775a3da74a469, started, controller-1, https://192.168.199.11:2380, https://192.168.199.11:2379
 ```
 
 Setup the controller services and verify they are up and running:
@@ -112,13 +108,11 @@ Setup the controller services and verify they are up and running:
 ```
 ./scripts/setup-controller-services
 [...]
-for c in controller-0 controller-1 controller-2; do vagrant ssh $c -- kubectl get componentstatuses; done
+for c in controller-0; do vagrant ssh $c -- kubectl get componentstatuses; done
 
 NAME                 STATUS    MESSAGE              ERROR
 controller-manager   Healthy   ok
 scheduler            Healthy   ok
-etcd-1               Healthy   {"health": "true"}
-etcd-2               Healthy   {"health": "true"}
 etcd-0               Healthy   {"health": "true"}
 [...]
 ```
