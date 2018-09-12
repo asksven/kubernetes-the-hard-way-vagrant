@@ -23,7 +23,8 @@ ExecStart=/usr/local/bin/kubelet \
   --runtime-request-timeout=10m \
   --tls-cert-file=/var/lib/kubelet/worker-1.pem \
   --tls-private-key-file=/var/lib/kubelet/worker-1-key.pem \
-  --v=2
+  --v=2 \
+  --resolv-conf=/run/systemd/resolve/resolv.conf
 Restart=on-failure
 RestartSec=5
 
